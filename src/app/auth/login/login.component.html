@@ -1,0 +1,46 @@
+<!-- <p>{{isSubmitting$ | async}}</p> -->
+<ng-container *ngIf="data$ | async as data">
+    <div class="auth-page">
+      <div class="container page">
+        <div class="row">
+          <div class="col-md-6 offset-md-3 col-xs-12">
+            <h1 class="text-xs-center">Login</h1>
+            <p class="text-xs-center">
+              <a routerLink="/register">Are you new here?</a>
+            </p>
+            <app-backend-error
+              *ngIf="data.backendErrors"
+              [errorMessage]="data.backendErrors"
+            ></app-backend-error>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        
+              <fieldset class="form-group">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+              </fieldset>
+              <fieldset class="form-group">
+                <input
+                  type="password"
+                  class="form-control form-control-lg"
+                  placeholder="Password"
+                  formControlName="password"
+                />
+              </fieldset>
+              <button
+                [disabled]="data.isSubmitting"
+                type="submit"
+                class="btn btn-lg btn-primary pull-xs-right"
+              >
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  
