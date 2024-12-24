@@ -9,13 +9,14 @@ import {CommonModule} from '@angular/common';
 import {AuthService} from '../services/auth.service';
 import { combineLatest } from 'rxjs';
 import { BackendErrorComponent } from "../../shared/components/backend-error/backend-error.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, BackendErrorComponent],
+  imports: [ReactiveFormsModule, CommonModule, BackendErrorComponent, RouterLink],
 })
 export class RegisterComponent {
   form = this.fb.nonNullable.group({
